@@ -13,3 +13,8 @@ imgs.forEach(img => img.style.border = `3px dashed ${borderColor}`);
 window.alert(`This page has ${imgs.length || 0} images without alt attribute`);
 ```
 
+**Fill in all inputs with their placeholder values**
+
+```JavaScript
+document.querySelectorAll('input[placeholder]').forEach(input => input.value = input.placeholder);
+```
