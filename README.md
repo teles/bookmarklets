@@ -4,7 +4,7 @@ A list of useful bookmarklets for daily usage
 
 ## General
 
-**Show images without alt attribute**
+### Show images without alt attribute
 
 ```JavaScript
 const borderColor = window.prompt("Set a highlight color for images without alt", "red");
@@ -13,7 +13,7 @@ imgs.forEach(img => img.style.border = `3px dashed ${borderColor}`);
 window.alert(`This page has ${imgs.length || 0} images without alt attribute`);
 ```
 
-**Fill in all inputs with their placeholder values**
+### Fill in all inputs with their placeholder values
 
 ```JavaScript
 document.querySelectorAll('input[placeholder]').forEach(input => input.value = input.placeholder);
