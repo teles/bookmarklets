@@ -4,6 +4,23 @@ A list of useful bookmarklets for daily usage
 
 ## General
 
+### Prepend relative URLs with base URL
+
+```JavaScript
+const prependURL = window.prompt("Base URL to prepend", location.hostname)
+Array.from(document.querySelectorAll("a[href]")).filter(a => {
+    return a.getAttribute("href") !== a.href;    
+}).forEach((a, index, anchors ) => {
+    a.setAttribute("href", [
+        prependURL.replace(/\/$/, ''), 
+        a.getAttribute("href").replace(/^\//, '')
+    ].join("/"));
+    if(index === anchors.length -1) {
+        window.alert(`Success: ${anchors.length} changed anchors`)
+    }
+})
+```
+
 ### Show images without alt attribute
 
 ```JavaScript
