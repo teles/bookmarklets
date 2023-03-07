@@ -39,12 +39,11 @@ document.querySelectorAll('input[placeholder]').forEach(input => input.value = i
 ### Fill in all inputs with placeholders plus timestamp
 
 ```JavaScript
+const inputReplacers = {
+    "email": (value) => value.replace(/(.*?)@(.*?)/, `$1+${new Date().getTime()}@$2`),
+    "text": (value) => `${value} +${new Date().getTime()}`    
+}
 document.querySelectorAll('input[placeholder]').forEach(input => { 
-    const replacers = {
-        "email": (value) => value.replace(/(.*?)@(.*?)/, `$1+${new Date().getTime()}@$2`),
-        "text": (value) => `${value} +${new Date().getTime()}`    
-    }
-    input.value = replacers[input.type] ? replacers[input.type](input.placeholder) : input.placeholder;    
+    input.value = inputReplacers[input.type] ? inputReplacers[input.type](input.placeholder) : input.placeholder;    
 });
 ```
-
