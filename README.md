@@ -35,3 +35,16 @@ window.alert(`This page has ${imgs.length || 0} images without alt attribute`);
 ```JavaScript
 document.querySelectorAll('input[placeholder]').forEach(input => input.value = input.placeholder);
 ```
+
+### Fill in all inputs with placeholders plus timestamp
+
+```JavaScript
+document.querySelectorAll('input[placeholder]').forEach(input => { 
+    const replacers = {
+        "email": (value) => value.replace(/(.*?)@(.*?)/, `$1+${new Date().getTime()}@$2`),
+        "text": (value) => `${value} +${new Date().getTime()}`    
+    }
+    input.value = replacers[input.type] ? replacers[input.type](input.placeholder) : input.placeholder;    
+});
+```
+
